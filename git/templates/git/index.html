@@ -6,5 +6,10 @@
     </head>
     <body>
         Repo Overview
+
+        <form method="post" action="/repository/add">{% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" name="Add">Add</button>
+        </form>
     </body>
 </html>
