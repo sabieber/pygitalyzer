@@ -5,14 +5,19 @@
         <title>Repo overview</title>
 
         {% load staticfiles %}
-        <script type="text/javascript" src="{% static 'libs/jquery/2.2.1/jquery.min.js' %}"></script>
-    </head>
-    <body>
-        Repo Overview
+        <link rel="stylesheet" href="{% static 'libs/materialize/0.97.5/css/materialize.min.css' %}" />
 
-        <form method="post" action="/repository/add">{% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" name="Add">Add</button>
-        </form>
+        <script type="text/javascript" src="{% static 'libs/jquery/2.2.1/jquery.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'libs/materialize/0.97.5/js/materialize.min.js' %}"></script>
+    </head>
+    <body class="blue-grey darken-4">
+        <div class="container">
+            <h1>Repo Overview</h1>
+
+            <form method="post" action="/repository/add">{% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" name="Add">Add</button>
+            </form>
+        </div>
     </body>
 </html>
