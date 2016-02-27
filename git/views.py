@@ -14,5 +14,11 @@ def index(request):
 
 @require_POST
 def add(request):
-    print(request.POST)
+    form = RepositoryForm(request.POST)
+
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.full_clean()
+        instance.save()
+
     return render(request, "git/index.html", {})
