@@ -1,23 +1,12 @@
-<!DOCTYPE html>
-{% load staticfiles %}
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Repo overview</title>
+{% extends "index.html" %}
 
-        <link rel="stylesheet" href="{% static 'libs/materialize/0.97.5/css/materialize.min.css' %}" />
+{% block content %}
+    <div class="container">
+        <h1 class="white-text">Repo Overview</h1>
 
-        <script type="text/javascript" src="{% static 'libs/jquery/2.2.1/jquery.min.js' %}"></script>
-        <script type="text/javascript" src="{% static 'libs/materialize/0.97.5/js/materialize.min.js' %}"></script>
-    </head>
-    <body class="blue-grey darken-4">
-        <div class="container">
-            <h1>Repo Overview</h1>
-
-            <form method="post" action="/repository/add">{% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" name="Add">Add</button>
-            </form>
-        </div>
-    </body>
-</html>
+        <form method="post" action="/repository/add">{% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" name="Add">Add</button>
+        </form>
+    </div>
+{% endblock %}

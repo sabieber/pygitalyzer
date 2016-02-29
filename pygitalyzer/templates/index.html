@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Repo overview</title>
+
+        <link rel="stylesheet" href="{% static 'libs/materialize/0.97.5/css/materialize.min.css' %}" />
+
+        <script type="text/javascript" src="{% static 'libs/jquery/2.2.1/jquery.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'libs/materialize/0.97.5/js/materialize.min.js' %}"></script>
+        {% block head %}
+        {% endblock %}
+    </head>
+    <body class="blue-grey darken-4">
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>

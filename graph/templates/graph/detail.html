@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Graph Detail</title>
-    </head>
-    <body>
-        Graph Detail
-    </body>
-</html>
+{% extends "index.html" %}
+{% load static from staticfiles %}
+
+{% block head %}
+    <script type="text/javascript" src="{% static 'libs/d3/3.5.16/d3.min.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="white-text">Graph Detail</h1>
+    </div>
+{% endblock %}
