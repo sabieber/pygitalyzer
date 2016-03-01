@@ -2,13 +2,35 @@
 
 {% block title %}Repo Overview |{% endblock %}
 
+{% block head %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.modal-trigger').leanModal();
+        });
+    </script>
+{% endblock %}
+
 {% block content %}
     <div class="container">
-        <h1 class="white-text">Repo Overview</h1>
+        <h1 class="teal-text text-accent-1">Repositories</h1>
 
-        <form method="post" action="/repository/add">{% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" name="Add">Add</button>
-        </form>
+        <div id="addRepoModal" class="modal">
+            <form method="post" action="/repository/add">{% csrf_token %}
+                <div class="modal-content">
+                    <h3>Create a new Repository</h3>
+                    {{ form.as_p }}
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-flat waves-effect waves-red modal-action modal-close" name="cancel">Cancel</button>
+                    <button class="btn-flat waves-effect waves-light modal-action" type="submit" name="create">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="fixed-action-btn" style="bottom: 45px; right: 45px;">
+        <a class="btn-floating btn-large waves-effect waves-light red right modal-trigger" href="#addRepoModal">
+            <i class="material-icons">add</i>
+        </a>
     </div>
 {% endblock %}
