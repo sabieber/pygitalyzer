@@ -14,6 +14,15 @@
     <div class="container">
         <h1 class="teal-text text-accent-1">Repositories</h1>
 
+        <div class="row repositories">
+            {% for repo in repositories %}
+                <div class="col s6">
+                    {{ repo.name }}
+                    <a href="{% url 'graphs' %}" class="teal-text text-darken-1">Show Graphs</a>
+                </div>
+            {% endfor %}
+        </div>
+
         <div id="addRepoModal" class="modal">
             <form method="post" action="/repository/add">{% csrf_token %}
                 <div class="modal-content">

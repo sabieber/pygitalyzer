@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.decorators.http import require_POST, require_safe
 
+from git.models import Repository
 from .forms import RepositoryForm
 
 
@@ -8,6 +9,7 @@ from .forms import RepositoryForm
 def index(request):
     context = {
         'form': RepositoryForm(),
+        'repositories': Repository.objects.all(),
     }
     return render(request, "git/index.html", context)
 
