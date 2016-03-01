@@ -5,6 +5,8 @@
         <meta charset="UTF-8">
         <title>{% block title %}{% endblock %} PyGitalyzer</title>
 
+        <link rel="icon" type="image/ico" href="{% static 'img/favicon.png' %}"/>
+
         <link rel="stylesheet" href="{% static 'libs/materialize/0.97.5/css/materialize.min.css' %}" />
 
         <script type="text/javascript" src="{% static 'libs/jquery/2.2.1/jquery.min.js' %}"></script>
@@ -13,7 +15,15 @@
         {% endblock %}
     </head>
     <body class="blue-grey darken-4">
-        {% block content %}
-        {% endblock %}
+        <header>
+            <nav class="top-nav blue-grey darken-2">
+                <div class="container">
+                    <div class="nav-wrapper">
+                        <a class="brand-logo center" href="/"><img src="{% static 'img/favicon.png' %}" style="width: 26px; height: 36px; padding-top: 10px;" /> GITALYZER</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        {% block content %}{% endblock %}
     </body>
 </html>
