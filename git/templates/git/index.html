@@ -17,8 +17,14 @@
         <div class="row repositories">
             {% for repo in repositories %}
                 <div class="col s6">
-                    {{ repo.name }}
-                    <a href="{% url 'graphs' %}" class="teal-text text-darken-1">Show Graphs</a>
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">{{ repo.name }}</span>
+                        </div>
+                        <div class="card-action">
+                            <a href="{% url 'graphs' %}" class="teal-text text-darken-1">Show Graphs</a>
+                        </div>
+                    </div>
                 </div>
             {% endfor %}
         </div>
