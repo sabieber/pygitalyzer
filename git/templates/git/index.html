@@ -22,7 +22,8 @@
                             <span class="card-title">{{ repo.name }}</span>
                         </div>
                         <div class="card-action">
-                            <a href="{% url 'graphs' %}" class="teal-text text-darken-1">Show Graphs</a>
+                            <a href="{% url 'graph:graphs' %}" class="teal-text text-darken-1">Show Graphs</a>
+                            <a href="{% url 'git:remove_repository' id=repo.id %}" class="teal-text text-darken-1">Delete</a>
                         </div>
                     </div>
                 </div>
@@ -30,7 +31,7 @@
         </div>
 
         <div id="addRepoModal" class="modal">
-            <form method="post" action="/repository/add">{% csrf_token %}
+            <form method="post" action="{% url 'git:add_repository' %}">{% csrf_token %}
                 <div class="modal-content">
                     <h3>Create a new Repository</h3>
                     {{ form.as_p }}

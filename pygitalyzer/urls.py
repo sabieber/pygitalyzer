@@ -7,7 +7,7 @@ import graph.urls
 import git.urls
 
 urlpatterns = [
-    url(r'^', include(git.urls)),
+    url(r'^', include(git.urls, namespace="git")),
     url(r'^admin/', admin.site.urls),
-    url(r'^graph/', include(graph.urls)),
+    url(r'^graph/', include(graph.urls, namespace="graph")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.contrib import messages
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_POST, require_safe
 
 from git.models import Repository
@@ -23,4 +24,12 @@ def add(request):
         instance.full_clean()
         instance.save()
 
-    return render(request, "git/index.html", {})
+    return redirect("git:repositories")
+
+
+@require_safe
+def remove(request, id=None):
+    repository = get_object_or_404(Repository, id=id)
+    repository.delete()
+    messages.success(request, "Successfully deleted")
+    return redirect("git:repositories")

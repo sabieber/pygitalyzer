@@ -6,5 +6,6 @@ urlpatterns = [
     # /
     url(r'^$', views.index, name='repositories'),
     # /repository/add/
-    url(r'^repository/add$', views.add, name='add repository'),
+    url(r'^repository/add$', views.add, name='add_repository'),
+    url(r'^repository/(?P<id>\d+)/remove$', views.remove, name='remove_repository'),
 ]
