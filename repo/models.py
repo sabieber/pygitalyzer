@@ -15,6 +15,14 @@ class Repository(models.Model):
     def __str__(self):
         return self.name
 
-    def checkout(self):
-        repo = Repo.clone_from(self.url, join(BASE_DIR, 'repo', self.id))
-        print(repo.bare)
+    def get_local_repo_dir(self):
+        return join(BASE_DIR, 'tmp', 'repo', str(self.id))
+
+    def clone(self):
+        print("Creating empty repository")
+        repo = Repo.init(self.get_local_repo_dir())
+        origin = repo.create_remote('origin', self.url)
+        origin.fetch()
+        print("Cloning from remote url")
+        origin.pull(origin.refs[0].remote_head)
+        print("Done")
