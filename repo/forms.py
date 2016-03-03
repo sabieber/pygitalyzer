@@ -1,6 +1,6 @@
 from django import forms
 
-from git.models import Repository
+from repo.models import Repository
 
 
 class RepositoryForm(forms.ModelForm):

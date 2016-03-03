@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_POST, require_safe
 
-from git.models import Repository
+from repo.models import Repository
 from .forms import RepositoryForm
 
 
@@ -12,7 +12,7 @@ def index(request):
         'form': RepositoryForm(),
         'repositories': Repository.objects.all(),
     }
-    return render(request, "git/index.html", context)
+    return render(request, "repo/index.html", context)
 
 
 @require_POST
@@ -24,7 +24,7 @@ def add(request):
         instance.full_clean()
         instance.save()
 
-    return redirect("git:repositories")
+    return redirect("repo:repositories")
 
 
 @require_safe
@@ -32,4 +32,4 @@ def remove(request, id=None):
     repository = get_object_or_404(Repository, id=id)
     repository.delete()
     messages.success(request, "Successfully deleted")
-    return redirect("git:repositories")
+    return redirect("repo:repositories")

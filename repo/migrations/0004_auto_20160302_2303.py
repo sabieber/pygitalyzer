@@ -8,7 +8,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('git', '0003_auto_20160227_2337'),
+        ('repo', '0003_auto_20160227_2337'),
     ]
 
     operations = [

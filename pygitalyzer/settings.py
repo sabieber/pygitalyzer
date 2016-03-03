@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'pygitalyzer',
     'graph',
-    'git',
+    'repo',
 ]
 
 MIDDLEWARE_CLASSES = [
