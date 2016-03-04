@@ -18,11 +18,15 @@ class Repository(models.Model):
     def get_local_repo_dir(self):
         return join(BASE_DIR, 'tmp', 'repo', str(self.id))
 
-    def clone(self):
-        print("Creating empty repository")
-        repo = Repo.init(self.get_local_repo_dir())
-        origin = repo.create_remote('origin', self.url)
-        origin.fetch()
-        print("Cloning from remote url")
-        origin.pull(origin.refs[0].remote_head)
+    def init_repo(self):
+        if hasattr(self, 'repo'):
+            self.repo = Repo.init(self.get_local_repo_dir())
+            self.origin = self.repo.create_remote('origin', self.url)
+
+    def checkout(self):
+        self.init_repo()
+        print("Initializing repository")
+        self.origin.fetch()
+        print("Pulling from remote url")
+        self.origin.pull(self.origin.refs[0].remote_head)
         print("Done")
